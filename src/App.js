@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 
-import MapContainer from './Containers/MapContainer';
+import MapContainer from './Components/MapContainer';
 
 const googleMapURL = "https://maps.googleapis.com/maps/api/js?v=3.27&libraries=places,geometry&key=AIzaSyCip66xOIiDkd1h8T723WFID-zAApGddE4";
 
