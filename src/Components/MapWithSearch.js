@@ -35,10 +35,13 @@ const MapWithSearch = withGoogleMap(props => (
       inputPlaceholder="Enter Address..."
       inputStyle={INPUT_STYLE}
     />
-    {props.markers.map((marker, index) => (
-      <Marker position={marker.position} key={index} />
-    ))}
+    <Marker position={props.marker.position} />
+
   </GoogleMap>
 ));
 
 export default MapWithSearch;
+
+    // {props.markers.map((marker, index) => (
+    //   <Marker position={marker.position} key={index} />
+    // ))}

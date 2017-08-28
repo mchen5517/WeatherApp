@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 
 import MapWithSearch from './MapWithSearch';
 
-export default class MapContainer extends Component {
+import {connect} from 'react-redux'
+
+import { addMapToStore, editMarker } from '../Reducers/Map';
+
+
+class MapContainer extends Component {
 
   state = {
     bounds: null,
@@ -10,7 +15,7 @@ export default class MapContainer extends Component {
       lat: 53.22346,
       lng: -4.1980,
     },
-    markers: [],
+    marker: {},
   };
 
   handleMapMounted = this.handleMapMounted.bind(this);
@@ -20,6 +25,7 @@ export default class MapContainer extends Component {
 
   handleMapMounted(map) {
     this._map = map;
+    this.props.addMapToStore(map);
   }
 
   handleBoundsChanged() {
@@ -36,24 +42,24 @@ export default class MapContainer extends Component {
   handlePlacesChanged() {
     const places = this._searchBox.getPlaces();
 
-    const bounds = new window.google.maps.LatLngBounds();
+    if(places.length > 0){
 
-    places.map(place => {
-      place.geometry.viewport ? bounds.union(place.geometry.viewport) : bounds.extend(place.geometry.location)
-    });
+      const bounds = new window.google.maps.LatLngBounds();
 
-    const markers = places.map(place => ({
-      position: place.geometry.location,
-    }));
+      bounds.union(places[0].geometry.viewport);
 
-    const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
+      const marker = { position: places[0].geometry.location };
 
-    this.setState({
-      center: mapCenter,
-      markers,
-    });
+      this.setState({
+        center: marker.location,
+        marker: marker,
+      });
 
-    this._map.fitBounds(bounds);
+      this.props.editMarker(marker);
+
+      this._map.fitBounds(bounds);
+
+    }
   }
 
   render() {
@@ -71,8 +77,16 @@ export default class MapContainer extends Component {
         onSearchBoxMounted={this.handleSearchBoxMounted}
         bounds={this.state.bounds}
         onPlacesChanged={this.handlePlacesChanged}
-        markers={this.state.markers}
+        marker={this.state.marker}
       />
     );
   }
 }
+
+// Connect to store 
+
+export default connect(
+  ({map}) => ({map}),
+  ({addMapToStore, editMarker})
+)(MapContainer);
+
