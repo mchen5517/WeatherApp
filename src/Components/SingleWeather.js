@@ -7,11 +7,38 @@ const formatForSkyCon = iconStr => {
   return iconStr.split('-').join('_').toUpperCase();
 }
 
-class DailyForecast extends Component {
+class SingleWeather extends Component {
   render() {
     return (
       <div>
-        <h3 className="text-center">{(new Date(this.props.day.time * 1000)).getDate()}</h3>
+        <h2 className="text-center">{(new Date(this.props.day.time * 1000)).getDate()}</h2>
+        {
+          this.props.current && (
+            <div>
+              <div className="col-xs-4 text-center">
+                <h3>
+                  <div><i className="fa fa-tint" aria-hidden="true"></i></div>
+                  {this.props.current.humidity * 100}
+                  <div>%</div>
+                </h3>
+              </div>
+              <div className="col-xs-4 text-center">
+                <h3>                  
+                  <div><i className="fa fa-thermometer-half" aria-hidden="true"></i></div>
+                  {this.props.current.temperature}
+                  <div>F</div>
+                </h3>
+              </div>
+              <div className="col-xs-4 text-center">
+                <h3>                  
+                  <div><i className="fa fa-paper-plane" aria-hidden="true"></i></div>
+                  {this.props.current.windSpeed}
+                  <div>mph</div>
+                </h3>
+              </div>
+            </div>
+          )
+        }
         <div>
           <SkyCon color="black" icon={`${formatForSkyCon(this.props.day.icon)}`} autoplay={true}/>
         </div>
@@ -28,4 +55,4 @@ class DailyForecast extends Component {
   }
 }
 
-export default connect(({weather}) => ({weather}))(DailyForecast);
+export default connect(({weather}) => ({weather}))(SingleWeather);

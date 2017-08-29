@@ -1,0 +1,9 @@
+.single-weather-well {
+  border: 0 .5vw 0 .5vw;
+  padding: .5vh;
+  margin-bottom: 0; 
+  background-clip: content-box;
+  border: 0;
+  box-shadow: 0;
+  background-color: rgba(128, 128, 128, .85);
+}

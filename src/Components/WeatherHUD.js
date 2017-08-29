@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 
 import HUDComponent from './HUDComponent';
 import DailyForecast from './DailyForecast';
+import CurrentWeather from './CurrentWeather';
+
 
 const HUD_STYLE = {
   zIndex: "2",
@@ -16,6 +18,8 @@ class WeatherHUD extends Component {
       <div style={HUD_STYLE}>
         <HUDComponent
           content={<DailyForecast />} />
+        <HUDComponent
+          content={<CurrentWeather />} />
       </div>
     )
   }
