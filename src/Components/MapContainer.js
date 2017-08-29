@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import MapWithSearch from './MapWithSearch';
 
 import {connect} from 'react-redux'
-
 import { addMapToStore, editMarker } from '../Reducers/Map';
+import { editWeather } from "../Reducers/Weather";
 
 
 class MapContainer extends Component {
@@ -12,8 +12,8 @@ class MapContainer extends Component {
   state = {
     bounds: null,
     center: {
-      lat: 53.22346,
-      lng: -4.1980,
+      lat: 40.7433083,
+      lng: -73.9873796,
     },
     marker: {},
   };
@@ -56,6 +56,7 @@ class MapContainer extends Component {
       });
 
       this.props.editMarker(marker);
+      this.props.editWeather(marker.position.lat(), marker.position.lng());
 
       this._map.fitBounds(bounds);
 
@@ -87,6 +88,6 @@ class MapContainer extends Component {
 
 export default connect(
   ({map}) => ({map}),
-  ({addMapToStore, editMarker})
+  ({addMapToStore, editMarker, editWeather})
 )(MapContainer);
 

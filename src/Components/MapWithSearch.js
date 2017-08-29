@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { GoogleMap, withGoogleMap, Marker } from "react-google-maps";
-import withScriptjs from "react-google-maps/lib/async/withScriptjs";
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 
 const INPUT_STYLE = {
@@ -15,9 +14,10 @@ const INPUT_STYLE = {
   right: "0px",
   borderRadius: "1px",
   boxShadow: "0 2px 6px rgba(0, 0, 0, 0.3)",
-  fontSize: "14px",
+  fontSize: "3vh",
   outline: "none",
   textOverflow: "ellipses",
+  padding: "0px 1% 0px 1%"
 };
 
 const MapWithSearch = withGoogleMap(props => (
@@ -32,7 +32,7 @@ const MapWithSearch = withGoogleMap(props => (
       bounds={props.bounds}
       controlPosition={window.google.maps.ControlPosition.TOP_LEFT}
       onPlacesChanged={props.onPlacesChanged}
-      inputPlaceholder="Enter Address..."
+      inputPlaceholder="Enter a Place..."
       inputStyle={INPUT_STYLE}
     />
     <Marker position={props.marker.position} />
@@ -41,7 +41,3 @@ const MapWithSearch = withGoogleMap(props => (
 ));
 
 export default MapWithSearch;
-
-    // {props.markers.map((marker, index) => (
-    //   <Marker position={marker.position} key={index} />
-    // ))}
