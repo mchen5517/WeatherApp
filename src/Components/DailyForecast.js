@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SkyCon from 'react-skycons';
 
+import SingleWeather from './SingleWeather';
+
 import {connect} from 'react-redux'
 
 const formatForSkyCon = iconStr => {
@@ -10,14 +12,11 @@ const formatForSkyCon = iconStr => {
 class DailyForecast extends Component {
   render() {
     return (
-      <div>
+      <div className="container fade in" style={{position: "absolute", width: "50vw", bottom: "-98vh", left: "25vw"}}>
         {
-          this.props.weather.daily && this.props.weather.daily.data.map(day => 
-            <div key={day.time} style={{padding: "0 0 0 0", height: "16%"}}>
-              <h4 style={{textAlign: "center", fontSize: "3vh", padding: "0 0 0 0"}}>{(new Date(day.time * 1000)).getDate()}</h4>
-              <div style={{width: "25%", margin: "auto", padding: "0 0 0 0 "}}>
-                <SkyCon color="blue" icon={`${formatForSkyCon(day.icon)}`} autoplay={true}/>
-              </div>
+          this.props.weather.daily && this.props.weather.daily.data.slice(1, 7).map(day => 
+            <div className="col-xs-2 well" key={day.time} style={{border: "0 .5vw 0 .5vw", padding: ".5vh", marginBottom: "0", backgroundClip: "content-box", border: "0", boxShadow: "0"}}>
+              <SingleWeather day={day} />
             </div>
           )
         }
