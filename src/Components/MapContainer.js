@@ -4,7 +4,7 @@ import MapWithSearch from './MapWithSearch';
 
 import {connect} from 'react-redux'
 import { addMapToStore, editMarker } from '../Reducers/Map';
-import { editWeather } from "../Reducers/Weather";
+import { editWeather, clearWeather } from "../Reducers/Weather";
 
 
 class MapContainer extends Component {
@@ -56,6 +56,7 @@ class MapContainer extends Component {
       });
 
       this.props.editMarker(marker);
+      this.props.clearWeather();
       this.props.editWeather(marker.position.lat(), marker.position.lng());
 
       this._map.fitBounds(bounds);
@@ -88,6 +89,6 @@ class MapContainer extends Component {
 
 export default connect(
   ({map}) => ({map}),
-  ({addMapToStore, editMarker, editWeather})
+  ({addMapToStore, editMarker, editWeather, clearWeather})
 )(MapContainer);
 

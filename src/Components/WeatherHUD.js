@@ -15,11 +15,15 @@ const HUD_STYLE = {
 class WeatherHUD extends Component {
   render() {
     return (
-      <div style={HUD_STYLE}>
-        <HUDComponent
-          content={<DailyForecast />} />
-        <HUDComponent
-          content={<CurrentWeather />} />
+      <div>
+      { this.props.weather !== {} && 
+        <div style={HUD_STYLE}>
+          <HUDComponent
+            content={<DailyForecast />} />
+          <HUDComponent
+            content={<CurrentWeather />} />
+        </div>
+      }
       </div>
     )
   }

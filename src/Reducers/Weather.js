@@ -24,4 +24,8 @@ export const editWeather = (lat, lng) => dispatch => {
     .then(data => dispatch(setWeather(data)));
 }
 
+export const clearWeather = () => dispatch => {
+  dispatch(setWeather({}));
+}
+
 export default reducer;
