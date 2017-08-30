@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 import SingleWeather from './SingleWeather';
 import CalendarInput from './CalendarInput';
 
+import { toggleTimeMachineOverlay } from "../Reducers/WeatherTimeMachine";
+
 import {connect} from 'react-redux'
 
 class CurrentWeather extends Component {
+
   render() {
     return (
       <div>
@@ -13,7 +16,7 @@ class CurrentWeather extends Component {
           this.props.weather.daily && 
           <div className="container" style={{position: "absolute", bottom: "-98vh", left: "3vw", width: "22vw"}}>
             <div className="well no-padding no-margin col-xs-12">
-              <button className="btn btn-info btn-block">
+              <button className="btn btn-info btn-block" onClick={this.props.toggleTimeMachineOverlay}>
                 Time Machine
               </button>
             </div>
@@ -27,4 +30,4 @@ class CurrentWeather extends Component {
   }
 }
 
-export default connect(({weather}) => ({weather}))(CurrentWeather);
+export default connect(({weather}) => ({weather}), {toggleTimeMachineOverlay})(CurrentWeather);

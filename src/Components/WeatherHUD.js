@@ -16,7 +16,7 @@ class WeatherHUD extends Component {
   render() {
     return (
       <div>
-      { this.props.weather !== {} && 
+      { Object.getOwnPropertyNames(this.props.weather).length !== 0 && 
         <div style={HUD_STYLE}>
           <HUDComponent
             content={<DailyForecast />} />

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { editWeatherTimeMachine, clearWeatherTimeMachine } from "../Reducers/WeatherTimeMachine";
+
 import {connect} from 'react-redux'
 
 import DatePicker from 'react-datepicker';
@@ -23,6 +25,8 @@ class CalendarInput extends Component {
       this.setState({
         date
       });
+      this.props.clearWeatherTimeMachine();
+      this.props.editWeatherTimeMachine(this.props.map.marker.position.lat(), this.props.map.marker.position.lng(), date);
     }
   }
 
@@ -34,11 +38,12 @@ class CalendarInput extends Component {
             selected={this.state.date}
             onChange={this.handleChange}
             minDate={moment().subtract(30, "days")}
-            maxDate={moment().add(5, "days")} 
+            maxDate={moment().add(5, "days")}
+            placeholderText="Choose a Date"
             customInput={(
               <button 
-                className="btn btn-default btn-block">
-                {this.state.date.format("YYYY-MM-DD")}
+                className="btn btn-default btn-block btn-lg">
+                <h1>{this.state.date.format("YYYY-MM-DD")}</h1>
               </button>
             )}/>
         </div>
@@ -47,4 +52,4 @@ class CalendarInput extends Component {
   }
 }
 
-export default connect()(CalendarInput);
+export default connect(({map, weatherTimeMachine}) => ({map, weatherTimeMachine}), {editWeatherTimeMachine, clearWeatherTimeMachine})(CalendarInput);
