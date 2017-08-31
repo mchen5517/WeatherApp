@@ -27,13 +27,17 @@ const CALENDAR_INPUT_STYLE = {
   top: "5vh"
 }
 
-const GRAPH_CONTAINER_STYLE ={
+const GRAPH_CONTAINER_STYLE = {
   position: "absolute",
   left: "20vw",
   width: "60vw",
   top: "30vh",
   height: "50vh",
   backgroundColor: "rgba(255, 255, 255, .75)"
+}
+
+const SINGLE_GRAPH_STYLE = {
+  height: "40vh"
 }
 
 class TimeMachineOverlay extends Component {
@@ -65,18 +69,20 @@ class TimeMachineOverlay extends Component {
             </button>
             { 
               Object.getOwnPropertyNames(this.props.weatherTimeMachine.weather).length !== 0 && (
-                <div className="container" style={GRAPH_CONTAINER_STYLE}>
-                  <div className="col-xs-6">
+                <div className="well" style={GRAPH_CONTAINER_STYLE}>
+                  <div className="col-xs-6" style={SINGLE_GRAPH_STYLE}>
                     <WeatherDygraph 
                       data={this.mapHourlyData('temperature', this.props.weatherTimeMachine.weather.hourly.data)} 
                       xlabel="Time (hourly)" 
-                      ylabel="Temperature (F)" />
+                      ylabel="Temperature (F)"
+                      dataType="temperature" />
                   </div>
-                  <div className="col-xs-6">
+                  <div className="col-xs-6" style={SINGLE_GRAPH_STYLE}>
                     <WeatherDygraph 
                       data={this.mapHourlyData('humidity', this.props.weatherTimeMachine.weather.hourly.data)} 
                       xlabel="Time (hourly)" 
-                      ylabel="Humidity" />
+                      ylabel="Humidity" 
+                      dataType="humidity" />
                   </div>
                 </div>
               )

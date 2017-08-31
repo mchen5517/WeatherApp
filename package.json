@@ -5,12 +5,12 @@
   "dependencies": {
     "axios": "^0.16.2",
     "dark-sky": "^1.1.2",
+    "dygraphs": "^2.0.0",
     "history": "^4.7.2",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-datepicker": "^0.53.0",
     "react-dom": "^15.6.1",
-    "react-dygraphs": "0.0.1",
     "react-google-maps": "^7.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
