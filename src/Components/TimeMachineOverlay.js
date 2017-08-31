@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import CalendarInput from './CalendarInput';
 import WeatherDygraph from './WeatherDygraph';
-import { toggleTimeMachineOverlay } from "../Reducers/WeatherTimeMachine";
+import { toggleTimeMachineOverlay, clearWeatherTimeMachine } from "../Reducers/WeatherTimeMachine";
 
 import {connect} from 'react-redux'
 
@@ -29,16 +29,27 @@ const CALENDAR_INPUT_STYLE = {
 
 const GRAPH_CONTAINER_STYLE ={
   position: "absolute",
-  left: "25vw",
-  width: "50vw",
-  top: "40vh",
-  height: "50vh"
+  left: "20vw",
+  width: "60vw",
+  top: "30vh",
+  height: "50vh",
+  backgroundColor: "rgba(255, 255, 255, .75)"
 }
 
 class TimeMachineOverlay extends Component {
 
+  constructor(props){
+    super(props);
+    this.handleCloseButtonOnClick = this.handleCloseButtonOnClick.bind(this);
+  }
+
   mapHourlyData(type, dataArr){
     return dataArr.map((ele, idx) => [ idx, ele[type] ]);
+  }
+
+  handleCloseButtonOnClick(){
+    this.props.toggleTimeMachineOverlay();
+    this.props.clearWeatherTimeMachine();
   }
 
   render() {
@@ -49,12 +60,12 @@ class TimeMachineOverlay extends Component {
             <div style={CALENDAR_INPUT_STYLE}>
               <CalendarInput />
             </div>
-            <button className="btn btn-link" style={CLOSE_BUTTON_STYLE} onClick={this.props.toggleTimeMachineOverlay}>
+            <button className="btn btn-link" style={CLOSE_BUTTON_STYLE} onClick={this.handleCloseButtonOnClick}>
               <i className="fa fa-times"></i> Close
             </button>
             { 
               Object.getOwnPropertyNames(this.props.weatherTimeMachine.weather).length !== 0 && (
-                <div style={GRAPH_CONTAINER_STYLE}>
+                <div className="container" style={GRAPH_CONTAINER_STYLE}>
                   <div className="col-xs-6">
                     <WeatherDygraph 
                       data={this.mapHourlyData('temperature', this.props.weatherTimeMachine.weather.hourly.data)} 
@@ -77,6 +88,6 @@ class TimeMachineOverlay extends Component {
   }
 }
 
-export default connect(({weatherTimeMachine}) => ({weatherTimeMachine}), {toggleTimeMachineOverlay})(TimeMachineOverlay);
+export default connect(({weatherTimeMachine}) => ({weatherTimeMachine}), {toggleTimeMachineOverlay, clearWeatherTimeMachine})(TimeMachineOverlay);
 
 // this.props.weatherTimeMachine.weather.hourly.data
