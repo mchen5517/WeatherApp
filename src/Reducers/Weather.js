@@ -1,6 +1,7 @@
-import darkSky from 'dark-sky';
+import axios from 'axios';
 
-const darkSkyAPI = new darkSky("c9712da792696983961bb047c616359d");
+const DARK_SKY_API_KEY = "c9712da792696983961bb047c616359d";
+
 
 const SET_WEATHER = "SET_WEATHER";
 
@@ -18,10 +19,9 @@ const reducer = (state = {}, action) => {
 }
 
 export const editWeather = (lat, lng) => dispatch => {
-  darkSkyAPI
-    .coordinates({lat, lng})
-    .get()
-    .then(data => dispatch(setWeather(data)));
+  axios
+    .get(`https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${lat},${lng}`)
+    .then(res => dispatch(setWeather(res.data)));
 }
 
 export const clearWeather = () => dispatch => {
