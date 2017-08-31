@@ -2,21 +2,16 @@ import React, {Component} from 'react';
 
 import dygraph from 'dygraphs'
 
-// export default class WeatherDygraph extends Component {
-//   render() {
-//     return (
-//       <Dygraph 
-//         data={this.props.data} 
-//         xlabel={this.props.xlabel} 
-//         ylabel={this.props.ylabel} />
-//     )
-//   }
-// }
+import './WeatherDygraph.css';
 
 export default class WeatherDygraph extends Component {
 
   componentDidMount(){
-    this.g = new dygraph(`dygraph-${this.props.dataType}`, this.props.data);
+    this.g = new dygraph(
+      `dygraph-${this.props.dataType}`, 
+      this.props.data,
+      {labels: ["Hour" , this.props.dataType], xlabel: this.props.xlabel, ylabel: this.props.ylabel, strokeWidth: 2}
+    );
   }
 
   render() {

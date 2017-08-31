@@ -8,7 +8,7 @@ class SearchHistoryComponent extends Component {
       <div>
         <div className="container" style={{position: "absolute", bottom: "-98vh", left: "75vw", width: "22vw", height: "30vh", overflow: "scroll"}}>
           <div>
-            <a href="https://darksky.net/dev/" target="_blank">Powered by Dark Sky</a>
+            <a href="https://darksky.net/dev/" target="_blank">Weather Information Powered by Dark Sky</a>
           </div>
           <div className="well">
             <h5 className="text-center">Recent Searches</h5>

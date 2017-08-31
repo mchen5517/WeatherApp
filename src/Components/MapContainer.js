@@ -10,19 +10,22 @@ import { pushSearchHistory } from '../Reducers/SearchHistory';
 
 class MapContainer extends Component {
 
-  state = {
-    bounds: null,
-    center: {
-      lat: 40.7433083,
-      lng: -73.9873796,
-    },
-    marker: {},
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      bounds: null,
+      center: {
+        lat: 40.7433083,
+        lng: -73.9873796,
+      },
+      marker: {},
+    };
 
-  handleMapMounted = this.handleMapMounted.bind(this);
-  handleBoundsChanged = this.handleBoundsChanged.bind(this);
-  handleSearchBoxMounted = this.handleSearchBoxMounted.bind(this);
-  handlePlacesChanged = this.handlePlacesChanged.bind(this);
+    this.handleMapMounted = this.handleMapMounted.bind(this);
+    this.handleBoundsChanged = this.handleBoundsChanged.bind(this);
+    this.handleSearchBoxMounted = this.handleSearchBoxMounted.bind(this);
+    this.handlePlacesChanged = this.handlePlacesChanged.bind(this);
+  }
 
   handleMapMounted(map) {
     this._map = map;
