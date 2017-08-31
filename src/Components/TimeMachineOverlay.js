@@ -64,7 +64,7 @@ class TimeMachineOverlay extends Component {
             <div style={CALENDAR_INPUT_STYLE}>
               <CalendarInput />
             </div>
-            <button className="btn btn-link" style={CLOSE_BUTTON_STYLE} onClick={this.handleCloseButtonOnClick}>
+            <button className="btn btn-link btn-lg" style={CLOSE_BUTTON_STYLE} onClick={this.handleCloseButtonOnClick}>
               <i className="fa fa-times"></i> Close
             </button>
             { 
