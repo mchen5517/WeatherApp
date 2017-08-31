@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import HUDComponent from './HUDComponent';
 import DailyForecast from './DailyForecast';
 import CurrentWeather from './CurrentWeather';
+import SearchHistoryComponent from './SearchHistoryComponent';
 
 
 const HUD_STYLE = {
@@ -24,6 +25,10 @@ class WeatherHUD extends Component {
             content={<CurrentWeather />} />
         </div>
       }
+        <div style={HUD_STYLE}>
+          <HUDComponent 
+          content={<SearchHistoryComponent />} />
+        </div>
       </div>
     )
   }

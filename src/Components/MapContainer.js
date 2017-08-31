@@ -5,6 +5,7 @@ import MapWithSearch from './MapWithSearch';
 import {connect} from 'react-redux'
 import { addMapToStore, editMarker } from '../Reducers/Map';
 import { editWeather, clearWeather } from "../Reducers/Weather";
+import { pushSearchHistory } from '../Reducers/SearchHistory';
 
 
 class MapContainer extends Component {
@@ -43,12 +44,13 @@ class MapContainer extends Component {
     const places = this._searchBox.getPlaces();
 
     if(places.length > 0){
+      const place = places[0]
 
       const bounds = new window.google.maps.LatLngBounds();
 
-      bounds.union(places[0].geometry.viewport);
+      bounds.union(place.geometry.viewport);
 
-      const marker = { position: places[0].geometry.location };
+      const marker = { position: place.geometry.location };
 
       this.setState({
         center: marker.location,
@@ -58,6 +60,7 @@ class MapContainer extends Component {
       this.props.editMarker(marker);
       this.props.clearWeather();
       this.props.editWeather(marker.position.lat(), marker.position.lng());
+      this.props.pushSearchHistory(place.formatted_address);
 
       this._map.fitBounds(bounds);
 
@@ -89,6 +92,6 @@ class MapContainer extends Component {
 
 export default connect(
   ({map}) => ({map}),
-  ({addMapToStore, editMarker, editWeather, clearWeather})
+  ({addMapToStore, editMarker, editWeather, clearWeather, pushSearchHistory})
 )(MapContainer);
 
