@@ -7,6 +7,7 @@ import { addMapToStore, editMarker } from '../Reducers/Map';
 import { editWeather, clearWeather } from "../Reducers/Weather";
 import { pushSearchHistory } from '../Reducers/SearchHistory';
 
+const GOOGLE_MAP_URL = "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCip66xOIiDkd1h8T723WFID-zAApGddE4"
 
 class MapContainer extends Component {
 
@@ -71,9 +72,10 @@ class MapContainer extends Component {
   }
 
   render() {
-    console.log(this._map);
     return (
       <MapWithSearch
+        googleMapURL={GOOGLE_MAP_URL}
+        loadingElement={<div>loading</div>}
         containerElement={
           <div style={{ height: "100%", width: "100%" }} />
         }

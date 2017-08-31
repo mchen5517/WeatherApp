@@ -2,6 +2,8 @@ import React from 'react';
 
 import { GoogleMap, withGoogleMap, Marker } from "react-google-maps";
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
+import withScriptjs from "react-google-maps/lib/async/withScriptjs";
+
 
 const INPUT_STYLE = {
   boxSizing: "border-box",
@@ -20,24 +22,25 @@ const INPUT_STYLE = {
   padding: "0px 1% 0px 1%"
 };
 
-const MapWithSearch = withGoogleMap(props => (
-  <GoogleMap
-    ref={props.onMapMounted}
-    defaultZoom={15}
-    center={props.center}
-    onBoundsChanged={props.onBoundsChanged}
-  >
-    <SearchBox
-      ref={props.onSearchBoxMounted}
-      bounds={props.bounds}
-      controlPosition={window.google.maps.ControlPosition.TOP_LEFT}
-      onPlacesChanged={props.onPlacesChanged}
-      inputPlaceholder="Enter a Place..."
-      inputStyle={INPUT_STYLE}
-    />
-    <Marker position={props.marker.position} />
+const MapWithSearch = withScriptjs(
+  withGoogleMap(props => (
+    <GoogleMap
+      ref={props.onMapMounted}
+      defaultZoom={15}
+      center={props.center}
+      onBoundsChanged={props.onBoundsChanged}
+    >
+      <SearchBox
+        ref={props.onSearchBoxMounted}
+        bounds={props.bounds}
+        controlPosition={window.google.maps.ControlPosition.TOP_LEFT}
+        onPlacesChanged={props.onPlacesChanged}
+        inputPlaceholder="Enter a Place..."
+        inputStyle={INPUT_STYLE}
+      />
+      <Marker position={props.marker.position} />
 
-  </GoogleMap>
-));
+    </GoogleMap>
+)));
 
 export default MapWithSearch;
