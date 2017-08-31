@@ -71,13 +71,14 @@ class MapContainer extends Component {
   }
 
   render() {
+    console.log(this._map);
     return (
       <MapWithSearch
         containerElement={
-          <div style={{ height: `100%`, width: `100%` }} />
+          <div style={{ height: "100%", width: "100%" }} />
         }
         mapElement={
-          <div style={{ height: `100%`, width: `100%` }} />
+          <div style={{ height: "100%", width: "100%" }} />
         }
         center={this.state.center}
         onMapMounted={this.handleMapMounted}

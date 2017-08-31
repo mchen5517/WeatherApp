@@ -37,7 +37,7 @@ const GRAPH_CONTAINER_STYLE = {
 }
 
 const SINGLE_GRAPH_STYLE = {
-  height: "40vh"
+  height: "80%"
 }
 
 class TimeMachineOverlay extends Component {
@@ -70,6 +70,7 @@ class TimeMachineOverlay extends Component {
             { 
               Object.getOwnPropertyNames(this.props.weatherTimeMachine.weather).length !== 0 && (
                 <div className="well" style={GRAPH_CONTAINER_STYLE}>
+                  <div className="text-center" style={{height: "20%"}}>{ this.props.weatherTimeMachine.weather.hourly.summary }</div>
                   <div className="col-xs-6" style={SINGLE_GRAPH_STYLE}>
                     <WeatherDygraph 
                       data={this.mapHourlyData('temperature', this.props.weatherTimeMachine.weather.hourly.data)} 
