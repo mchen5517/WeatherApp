@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import CalendarInput from './CalendarInput';
-import WeatherDygraph from './WeatherDygraph';
+import WeatherGraph from './WeatherGraph';
 import { toggleTimeMachineOverlay, clearWeatherTimeMachine } from "../Reducers/WeatherTimeMachine";
 
 import {connect} from 'react-redux'
@@ -72,18 +72,20 @@ class TimeMachineOverlay extends Component {
                 <div className="well" style={GRAPH_CONTAINER_STYLE}>
                   <div className="text-center" style={{height: "20%"}}>{ this.props.weatherTimeMachine.weather.hourly.summary }</div>
                   <div className="col-xs-6" style={SINGLE_GRAPH_STYLE}>
-                    <WeatherDygraph 
+                    <WeatherGraph 
                       data={this.mapHourlyData('temperature', this.props.weatherTimeMachine.weather.hourly.data)} 
                       xlabel="Time (hourly)" 
                       ylabel="Temperature (F)"
-                      dataType="temperature" />
+                      dataType="temperature"
+                      title="Hourly Temperature" />
                   </div>
                   <div className="col-xs-6" style={SINGLE_GRAPH_STYLE}>
-                    <WeatherDygraph 
+                    <WeatherGraph 
                       data={this.mapHourlyData('humidity', this.props.weatherTimeMachine.weather.hourly.data)} 
                       xlabel="Time (hourly)" 
                       ylabel="Humidity" 
-                      dataType="humidity" />
+                      dataType="humidity"
+                      title="Hourly Humidity" />
                   </div>
                 </div>
               )
