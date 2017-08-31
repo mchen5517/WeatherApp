@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Spinner from 'react-spinner';
 
 import MapWithSearch from './MapWithSearch';
 
@@ -75,7 +76,7 @@ class MapContainer extends Component {
     return (
       <MapWithSearch
         googleMapURL={GOOGLE_MAP_URL}
-        loadingElement={<div>loading</div>}
+        loadingElement={<Spinner />}
         containerElement={
           <div style={{ height: "100%", width: "100%" }} />
         }
