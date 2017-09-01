@@ -15,7 +15,7 @@ const reducer = (state = [], action) => {
                           .slice(0, MAX_SEARCH_HISTORY_LENGTH - 1) 
                 ]
       }
-      else return [ action.searchStr, ...state ];
+      else return [ action.searchStr, ...state.filter(searchStr => action.searchStr !== searchStr) ];
     default:
       return state;
   }

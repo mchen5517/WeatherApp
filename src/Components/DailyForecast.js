@@ -4,10 +4,17 @@ import SingleWeather from './SingleWeather';
 
 import {connect} from 'react-redux'
 
+const DAILY_FORECAST_STYLE = {
+  position: "absolute", 
+  width: "50vw", 
+  bottom: "-98vh", 
+  left: "25vw"  
+}
+
 class DailyForecast extends Component {
   render() {
     return (
-      <div className="container" style={{position: "absolute", width: "50vw", bottom: "-98vh", left: "25vw"}}>
+      <div className="container" style={DAILY_FORECAST_STYLE}>
         {
           this.props.weather.daily && this.props.weather.daily.data.slice(1, 7).map(day => 
             <div className="col-xs-2 well single-weather-well" key={day.time}>

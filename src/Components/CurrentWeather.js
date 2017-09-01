@@ -7,14 +7,20 @@ import { toggleTimeMachineOverlay } from "../Reducers/WeatherTimeMachine";
 
 import {connect} from 'react-redux'
 
-class CurrentWeather extends Component {
+const CURRENT_WEATHER_STYLE = {
+  position: "absolute", 
+  bottom: "-98vh", 
+  left: "3vw", 
+  width: "22vw"
+}
 
+class CurrentWeather extends Component {
   render() {
     return (
       <div>
         { 
           this.props.weather.daily && 
-          <div className="container" style={{position: "absolute", bottom: "-98vh", left: "3vw", width: "22vw"}}>
+          <div className="container" style={CURRENT_WEATHER_STYLE>
             <div className="well no-padding no-margin col-xs-12">
               <button className="btn btn-info btn-block" onClick={this.props.toggleTimeMachineOverlay}>
                 Time Machine
