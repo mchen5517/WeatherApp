@@ -32,7 +32,7 @@ create-react-app global command
 npm install -g create-react-app
 ```
 
-.env.production.local in root is required
+.env in root is required
 ```sh
 REACT_APP_DARK_SKY_KEY=[YOUR_DARKSKY_API_KEY]
 REACT_APP_GOOGLE_MAPS_KEY=[YOUR_GOOGLE_MAPS_API_KEY]
