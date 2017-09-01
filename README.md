@@ -43,4 +43,4 @@ REACT_APP_GOOGLE_MAPS_KEY=[GOOGLE_MAPS_API_KEY]
 yarn build
 node app.js
 ```
-Server should be serving files on port 30000
+Server should be serving files on port 3000
