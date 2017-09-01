@@ -25,7 +25,7 @@ class CurrentWeather extends Component {
       <div>
         { 
           this.props.weather.daily && 
-          <div className="container" style={CURRENT_WEATHER_STYLE>
+          <div className="container" style={CURRENT_WEATHER_STYLE}>
             <div className="well no-padding no-margin col-xs-12">
               <button className="btn btn-info btn-block" onClick={this.props.toggleTimeMachineOverlay}>
                 Time Machine
