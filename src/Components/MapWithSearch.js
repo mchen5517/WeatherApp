@@ -1,9 +1,12 @@
-import React from 'react';
+/*****
+  MapWithSearch 
+  - component with Google Map and Search Bar.
+*****/
 
+import React from 'react';
 import { GoogleMap, withGoogleMap, Marker } from "react-google-maps";
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 import withScriptjs from "react-google-maps/lib/async/withScriptjs";
-
 
 const INPUT_STYLE = {
   boxSizing: "border-box",
@@ -22,6 +25,9 @@ const INPUT_STYLE = {
   padding: "0px 1% 0px 1%"
 };
 
+/*
+  withScriptjs deals with async loading of js resources (in this case google maps).  This allows us to use google.maps within this app.
+*/
 const MapWithSearch = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap

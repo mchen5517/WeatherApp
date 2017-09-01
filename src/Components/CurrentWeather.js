@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+/*****
+  CurrentWeather
+  - component for the left panel holding the button to open the TimeMachine panel and the current weather conditions.
+*****/
 
+// Component Dependencies:
 import SingleWeather from './SingleWeather';
-import CalendarInput from './CalendarInput';
 
+// Reducer Dependencies:
 import { toggleTimeMachineOverlay } from "../Reducers/WeatherTimeMachine";
 
+import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 const CURRENT_WEATHER_STYLE = {

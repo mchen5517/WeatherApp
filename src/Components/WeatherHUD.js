@@ -1,11 +1,17 @@
-import React, { Component } from 'react';
+/*****
+  WeatherHUD 
+  - main component for holding front layer of the app.
+*****/
 
-import {connect} from 'react-redux'
-
+// Component Dependencies:
 import HUDComponent from './HUDComponent';
 import DailyForecast from './DailyForecast';
 import CurrentWeather from './CurrentWeather';
 import SearchHistoryComponent from './SearchHistoryComponent';
+
+import React, { Component } from 'react';
+import {connect} from 'react-redux'
+
 
 
 const HUD_STYLE = {

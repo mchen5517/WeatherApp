@@ -1,11 +1,16 @@
+/*****
+  SingleWeather 
+  - component for containing information for a single day of weather.  Holds weather, lowtemp, maxtemp, and the day.
+  - if this.props.current is set, it will also put current temperature, humidity and wind speed.
+*****/
+
+// Util Dependencies:
+import { formatForSkyCon } from '../utils.js';
+
 import React, { Component } from 'react';
 import SkyCon from 'react-skycons';
-
 import {connect} from 'react-redux'
 
-const formatForSkyCon = iconStr => {
-  return iconStr.split('-').join('_').toUpperCase();
-}
 
 class SingleWeather extends Component {
   render() {

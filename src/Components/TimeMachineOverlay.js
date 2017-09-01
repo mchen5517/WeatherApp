@@ -1,9 +1,16 @@
-import React, { Component } from 'react';
+/*****
+  TimeMachineOverlay 
+  - component for containing holding the calendar input and the weather graphs for time machine.
+*****/
 
+// Component Dependencies:
 import CalendarInput from './CalendarInput';
 import WeatherGraph from './WeatherGraph';
+
+// Reducer Dependencies:
 import { toggleTimeMachineOverlay, clearWeatherTimeMachine } from "../Reducers/WeatherTimeMachine";
 
+import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 const OVERLAY_STYLE = {

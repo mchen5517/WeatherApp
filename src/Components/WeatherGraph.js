@@ -1,3 +1,9 @@
+/*****
+  WeatherGraph 
+  - component for containing the graph.
+  - takes a title, xlabel (x-axis label), ylabel (y-axis label), datatype (what is being measured), and data (in the form [[x_1, y_1], ...])
+*****/
+
 import React, {Component} from 'react';
 
 import { Chart } from 'react-google-charts';

@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+/*****
+  SearchHistoryComponent 
+  - component for the search history panel.
+*****/
 
+import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 const SEARCH_HISTORY_STYLE = {

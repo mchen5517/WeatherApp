@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+/*****
+  HUDComponent 
+  - wrapper component for HUD parts.  Currently does not have any extra styling or states.
+*****/
 
+import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 class HUDComponent extends Component{

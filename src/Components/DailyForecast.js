@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+/*****
+  DailyForecast 
+  - component for holding the next 6 days of weather.
+*****/
 
+// Component Dependencies:
 import SingleWeather from './SingleWeather';
 
+import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 const DAILY_FORECAST_STYLE = {

@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
-import Spinner from 'react-spinner';
+/*****
+  MapContainer 
+  - component for holding the Google Map with Search Box.  Deals with dispatching calls for weather information.
+*****/
 
+// Component Dependencies:
 import MapWithSearch from './MapWithSearch';
 
-import {connect} from 'react-redux'
+// Reducer Dependencies:
 import { addMapToStore, editMarker } from '../Reducers/Map';
 import { editWeather, clearWeather } from "../Reducers/Weather";
 import { pushSearchHistory } from '../Reducers/SearchHistory';
+
+import React, { Component } from 'react';
+import Spinner from 'react-spinner';
+import {connect} from 'react-redux'
 
 const GOOGLE_MAP_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
 
@@ -14,6 +21,7 @@ class MapContainer extends Component {
 
   constructor(props){
     super(props);
+    
     this.state = {
       bounds: null,
       center: {
@@ -94,8 +102,6 @@ class MapContainer extends Component {
     );
   }
 }
-
-// Connect to store 
 
 export default connect(
   ({map}) => ({map}),

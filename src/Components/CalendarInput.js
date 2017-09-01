@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+/*****
+  CalendarInput 
+  - component for using datepicker to select a date and sending said state to WeatherTimeMachine reducer for ajax request.
+*****/
 
+// Reducer Dependencies:
 import { editWeatherTimeMachine, clearWeatherTimeMachine } from "../Reducers/WeatherTimeMachine";
 
+import React, { Component } from 'react';
 import {connect} from 'react-redux'
-
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+
 
 import 'react-datepicker/dist/react-datepicker.css';
 
