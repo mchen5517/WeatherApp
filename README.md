@@ -40,6 +40,7 @@ REACT_APP_GOOGLE_MAPS_KEY=[GOOGLE_MAPS_API_KEY]
 
 ### Building and Running
 ```sh
+npm install
 yarn build
 node app.js
 ```
