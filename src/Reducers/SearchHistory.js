@@ -1,11 +1,15 @@
+/***** CONSTANTS *****/
 const MAX_SEARCH_HISTORY_LENGTH = 20;
 
+/***** ACTIONS ******/
 const ADD_HISTORY = "ADD_HISTORY";
 
+/***** ACTION CREATORS *****/
 const addHistory = searchStr => ({
   type: ADD_HISTORY, searchStr
 });
 
+/***** REDUCERS *****/
 const reducer = (state = [], action) => { 
   switch(action.type){
     case ADD_HISTORY:
@@ -21,6 +25,7 @@ const reducer = (state = [], action) => {
   }
 }
 
+/***** DISPATCHERS *****/
 export const pushSearchHistory = searchStr => dispatch => {
   dispatch(addHistory(searchStr));
 }
