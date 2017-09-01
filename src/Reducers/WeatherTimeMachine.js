@@ -1,8 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
 
-const DARK_SKY_API_KEY = "c9712da792696983961bb047c616359d";
-
 const SET_WEATHER_TIME_MACHINE = "SET_WEATHER_TIME_MACHINE";
 const TOGGLE_OVERLAY = "TOGGLE_OVERLAY";
 
@@ -27,7 +25,7 @@ const reducer = (state = {weather: {}, active: false}, action) => {
 
 export const editWeatherTimeMachine = (lat, lng, time) => dispatch => {
   axios
-    .get(`https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${lat},${lng},${moment(time).valueOf() / 1000}`)
+    .get(`https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/${lat},${lng},${moment(time).valueOf() / 1000}`)
     .then(res => dispatch(setWeatherTimeMachine(res.data)));
 }
 

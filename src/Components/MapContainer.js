@@ -8,7 +8,7 @@ import { addMapToStore, editMarker } from '../Reducers/Map';
 import { editWeather, clearWeather } from "../Reducers/Weather";
 import { pushSearchHistory } from '../Reducers/SearchHistory';
 
-const GOOGLE_MAP_URL = "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCip66xOIiDkd1h8T723WFID-zAApGddE4"
+const GOOGLE_MAP_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
 
 class MapContainer extends Component {
 

@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-const DARK_SKY_API_KEY = "c9712da792696983961bb047c616359d";
-
-
 const SET_WEATHER = "SET_WEATHER";
 
 const setWeather = weather => ({
@@ -20,7 +17,7 @@ const reducer = (state = {}, action) => {
 
 export const editWeather = (lat, lng) => dispatch => {
   axios
-    .get(`https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${lat},${lng}`)
+    .get(`https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/${lat},${lng}`)
     .then(res => dispatch(setWeather(res.data)));
 }
 
