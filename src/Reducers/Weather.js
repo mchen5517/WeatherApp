@@ -1,4 +1,4 @@
-import axios from 'axios';
+import jsonp from 'jsonp';
 
 const SET_WEATHER = "SET_WEATHER";
 
@@ -16,9 +16,11 @@ const reducer = (state = {}, action) => {
 }
 
 export const editWeather = (lat, lng) => dispatch => {
-  axios
-    .get(`https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/${lat},${lng}`)
-    .then(res => dispatch(setWeather(res.data)));
+  jsonp(`https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/${lat},${lng}`,
+    null,
+    (err, data) => {
+      dispatch(setWeather(data))
+    });
 }
 
 export const clearWeather = () => dispatch => {

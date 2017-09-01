@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
 
+const SEARCH_HISTORY_STYLE = {
+  position: "absolute", 
+  bottom: "-95vh", 
+  left: "75vw", 
+  width: "22vw", 
+  height: "30vh" 
+}
+
 class SearchHistoryComponent extends Component {
   render() {
     return (
       <div>
-        <div className="container" style={{position: "absolute", bottom: "-95vh", left: "75vw", width: "22vw", height: "30vh"}}>
+        <div className="container" style={SEARCH_HISTORY_STYLE}>
           <div>
             <a href="https://darksky.net/dev/" target="_blank">Weather Information Powered by Dark Sky</a>
           </div>

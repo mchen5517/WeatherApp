@@ -1,4 +1,4 @@
-import axios from 'axios';
+import jsonp from 'jsonp';
 import moment from 'moment';
 
 const SET_WEATHER_TIME_MACHINE = "SET_WEATHER_TIME_MACHINE";
@@ -24,9 +24,11 @@ const reducer = (state = {weather: {}, active: false}, action) => {
 }
 
 export const editWeatherTimeMachine = (lat, lng, time) => dispatch => {
-  axios
-    .get(`https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/${lat},${lng},${moment(time).valueOf() / 1000}`)
-    .then(res => dispatch(setWeatherTimeMachine(res.data)));
+  jsonp(`https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/${lat},${lng},${moment(time).valueOf() / 1000}`,
+    null,
+    (err, data) => {
+      dispatch(setWeatherTimeMachine(data))
+    });
 }
 
 export const clearWeatherTimeMachine = () => dispatch => {
